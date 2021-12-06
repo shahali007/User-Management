@@ -1,0 +1,28 @@
+.positionProfile{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.profileEditIcon {
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-right: 16px;
+    opacity: 0;
+    transition: all 0.3s;
+}
+.positionProfile:hover .profileEditIcon {
+    opacity: 1;
+}
+.pointer{
+    cursor: 'pointer';
+}
+.w90shrink0 {
+    width: 90%;
+    flex-shrink: 0;
+    background:red;
+}
+.w30 {
+    width: 40px !important;
+    min-width: auto;
+}

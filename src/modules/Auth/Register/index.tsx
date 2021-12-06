@@ -40,7 +40,6 @@ const Register = (): JSX.Element => {
 								label="First Name"
 								name="firstName"
 								autoComplete="firstName"
-								size="small"
 								InputLabelProps={{
 									shrink: true
 								}}
@@ -54,7 +53,6 @@ const Register = (): JSX.Element => {
 								label="Last Name"
 								name="firstName"
 								autoComplete="lastName"
-								size="small"
 								InputLabelProps={{
 									shrink: true
 								}}
@@ -69,7 +67,6 @@ const Register = (): JSX.Element => {
 								label="Email"
 								name="email"
 								autoComplete="email"
-								size="small"
 								InputLabelProps={{
 									shrink: true
 								}}
@@ -83,7 +80,6 @@ const Register = (): JSX.Element => {
 								label="Alternate Email"
 								name="alternateEmail"
 								autoComplete="alternateEmail"
-								size="small"
 								InputLabelProps={{
 									shrink: true
 								}}
@@ -100,7 +96,6 @@ const Register = (): JSX.Element => {
 								type="password"
 								id="password"
 								autoComplete="password"
-								size="small"
 								InputLabelProps={{
 									shrink: true
 								}}
@@ -116,7 +111,6 @@ const Register = (): JSX.Element => {
 								type="password"
 								id="confirmPassword"
 								autoComplete="confirmPassword"
-								size="small"
 								InputLabelProps={{
 									shrink: true
 								}}
@@ -130,7 +124,6 @@ const Register = (): JSX.Element => {
 								label="Last Education Degree"
 								id="lastEducationDegree"
 								autoComplete="lastEducationDegree"
-								size="small"
 								InputLabelProps={{
 									shrink: true
 								}}
@@ -144,7 +137,6 @@ const Register = (): JSX.Element => {
 								label="Last Education Institute"
 								id="lastEducationInstitute"
 								autoComplete="lastEducationInstitute"
-								size="small"
 								InputLabelProps={{
 									shrink: true
 								}}
@@ -178,21 +170,59 @@ const Register = (): JSX.Element => {
 								}}
 							/>
 						</Grid>
-						<Grid item md={12} xs={12}>
+						<Grid item md={6} xs={12}>
 							<TextField
 								margin="normal"
 								fullWidth
-								name="bio"
-								multiline
-								rows={3}
-								label="About Yourself"
-								id="bio"
-								autoComplete="bio"
+								name="phone"
+								label="Mobile No"
+								id="phone"
+								autoComplete="phone"
 								InputLabelProps={{
 									shrink: true
 								}}
 							/>
 						</Grid>
+						<Grid item md={6} xs={12}>
+							<TextField
+								margin="normal"
+								fullWidth
+								name="alternatePhone"
+								label="Alternate Mobile No"
+								id="alternatePhone"
+								autoComplete="alternatePhone"
+								InputLabelProps={{
+									shrink: true
+								}}
+							/>
+						</Grid>
+						<Grid item md={12} xs={12}>
+							<TextField
+								margin="normal"
+								fullWidth
+								name="country"
+								label="Country"
+								id="country"
+								autoComplete="country"
+								InputLabelProps={{
+									shrink: true
+								}}
+							/>
+						</Grid>
+						<Grid item md={12} xs={12}>
+							<TextField
+								margin="normal"
+								fullWidth
+								name="occupation"
+								label="Occupation"
+								id="occupation"
+								autoComplete="occupation"
+								InputLabelProps={{
+									shrink: true
+								}}
+							/>
+						</Grid>
+
 					</Grid>
 
 
@@ -211,7 +241,7 @@ const Register = (): JSX.Element => {
 							flexDirection: "column",
 							alignItems: "center",
 						}}>
-						<Link to="/register">
+						<Link to="/login">
 							{"Already have an account? Sign In"}
 						</Link>
 					</Box>

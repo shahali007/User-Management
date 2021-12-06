@@ -10,9 +10,6 @@ const ApplicationLayout = ({ children }: Props): JSX.Element => {
 	return (
 		<div>
 			<NavBar />
-			<nav>
-				<Link to="home">Home</Link> |<Link to="profile">Profile</Link>
-			</nav>
 			<div className="content">{children}</div>
 		</div>
 	);
