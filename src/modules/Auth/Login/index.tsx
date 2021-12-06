@@ -13,21 +13,6 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 
-function Copyright(props: any) {
-	return (
-		<Typography
-			variant="body2"
-			color="text.secondary"
-			align="center"
-			{...props}>
-			{"Copyright © "}
-			<Link to={"https://mui.com/"}>Your Website</Link>
-			{new Date().getFullYear()}
-			{"."}
-		</Typography>
-	);
-}
-
 const theme = createTheme();
 
 export default function Login() {
@@ -84,12 +69,6 @@ export default function Login() {
 						id="password"
 						autoComplete="current-password"
 					/>
-					<FormControlLabel
-						control={
-							<Checkbox value="remember" color="primary" />
-						}
-						label="Remember me"
-					/>
 					<Button
 						type="submit"
 						fullWidth
@@ -97,19 +76,19 @@ export default function Login() {
 						sx={{ mt: 3, mb: 2 }}>
 						Sign In
 					</Button>
-					<Grid container>
-						<Grid item xs>
-							<Link to="#">Forgot password?</Link>
-						</Grid>
-						<Grid item>
-							<Link to="/register">
-								{"Don't have an account? Sign Up"}
-							</Link>
-						</Grid>
-					</Grid>
+					<Box
+						sx={{
+							marginTop: 4,
+							display: "flex",
+							flexDirection: "column",
+							alignItems: "center",
+						}}>
+						<Link to="/register">
+							{"Don't have an account? Sign Up"}
+						</Link>
+					</Box>
 				</Box>
 			</Box>
-			<Copyright sx={{ mt: 8, mb: 4 }} />
 		</Container>
 	);
 }
