@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { store } from "../../redux/store";
+import { RootState, store } from "../../redux/store";
 import { baseUrl } from "./api";
 
 export const client = axios.create({
@@ -8,7 +8,7 @@ export const client = axios.create({
 });
 
 client.interceptors.request.use((config: any) => {
-    const { auth } = store.getState();
+    const { auth }: RootState = store.getState();
 
     if (auth.currentUser.authToken) {
         config.headers.Authorization = `${auth.currentUser.authToken}`;
@@ -27,18 +27,16 @@ client.interceptors.response.use(
             alert('err::CONNECTION::REFUSED');
         }
         //console.log('Axios err.response.status', error.response.status);
-        if (error.response.status === 401) {
-
-            setTimeout(() => {
-                localStorage.clear();
-                window.location.href = '/login'
-            }, 3000)
+        else if (error.response.status === 401 && window.location.pathname !== '/login') {
+            localStorage.clear();
+            //alert('Session Expired!! Please login');
+            window.location.href = '/login?q=session-expired';
         }
         else if (error.response.status === 404) {
-            //...
+            alert('Error 404! Not Found');
         }
         else if (error.response.status === 500) {
-            //...
+            alert('Error 500! Internal Server Error');
         }
         //console.log('Axios error', error);
         return Promise.reject({

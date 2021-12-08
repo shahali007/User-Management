@@ -1,8 +1,9 @@
+import { AxiosResponse } from 'axios';
 import client from "../client";
-import { Login, register } from "../../../typings/authTypings";
+import { Login, RegisterObj } from "../../../typings/authTypings";
 
-const login = (data: Login) => client.post('/login', data);
-const register = (data: register) => client.post('/register', data);
+const login = (data: Login): Promise<AxiosResponse> => client.post('/login', data);
+const register = (data: RegisterObj): Promise<AxiosResponse> => client.post('/register', data);
 
 const auth = {
     login,

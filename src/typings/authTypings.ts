@@ -3,8 +3,8 @@ export interface Login {
     password: string
 }
 
-export interface register {
-    firstname: string,
+export interface RegisterValues {
+    firstName: string,
     lastName: string | null,
     email: string,
     alternateEmail: string | null,
@@ -14,6 +14,22 @@ export interface register {
     permanentAddress: string | null,
     lastEducationDegree: string | null,
     lastEducationInstitute: string | null,
+    country: string | null,
+    occupation: string | null,
+    password: string
+}
+
+export interface RegisterObj {
+    first_name: string,
+    last_name: string | null,
+    email: string,
+    alternate_email: string | null,
+    phone: string,
+    alternate_phone: string | null,
+    present_address: string | null,
+    permanent_address: string | null,
+    last_education_degree: string | null,
+    last_education_institute: string | null,
     country: string | null,
     occupation: string | null,
     password: string

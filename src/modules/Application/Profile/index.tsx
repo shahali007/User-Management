@@ -1,13 +1,16 @@
 import React from 'react';
 import { Container, Grid, Paper, Box, Divider } from '@mui/material';
 import { LensBlur, Email, Room, Phone, Language, Work, School } from '@mui/icons-material';
+import { useSelector } from 'react-redux';
 
 import ProfileItem from '../../../shared/Component/ProfileItem';
 import ProfileImage from './ProfileImage';
 import ChangePassword from './ChangePassword';
 import EditProfile from './Edit';
+import { RootState } from '../../../redux/store';
 
 const Profile = () => {
+    const { currentUser } = useSelector((state: RootState) => state.auth);
     return (
         <Container maxWidth={'md'}>
             <Grid container spacing={3}>
@@ -32,18 +35,18 @@ const Profile = () => {
                         width: "100%"
                     }}>
                         <Grid container spacing={0}>
-                            <ProfileItem icon={<LensBlur />} title='First Name' data='Shah Ali' />
-                            <ProfileItem icon={<LensBlur />} title='Last Name' data='Bogdadi' />
-                            <ProfileItem icon={<Email />} title='Email' data='bogdadishahali@gmail.com' />
-                            <ProfileItem icon={<Email />} title='Alternate Email' data='shahali007@gmail.com' />
-                            <ProfileItem icon={<Room />} title='Present Address' data='Dhaka' />
-                            <ProfileItem icon={<Room />} title='Permanent Address' data='Narayangonj, Dhaka' />
-                            <ProfileItem icon={<Phone />} title='Mobile No' data='01234567890' />
-                            <ProfileItem icon={<Phone />} title='Alternate Mobile No' data='017000000' />
-                            <ProfileItem icon={<Language />} title='Country' data='Bangladesh' />
-                            <ProfileItem icon={<Work />} title='Occupation' data='Software Engineer (Frontend)' />
-                            <ProfileItem icon={<School />} title='Last Education Degree' data='MCA' />
-                            <ProfileItem icon={<School />} title='Last Education Institute' data='Stamford University' />
+                            <ProfileItem icon={<LensBlur />} title='First Name' data={currentUser.firstName} />
+                            <ProfileItem icon={<LensBlur />} title='Last Name' data={currentUser.lastName} />
+                            <ProfileItem icon={<Email />} title='Email' data={currentUser.email} />
+                            <ProfileItem icon={<Email />} title='Alternate Email' data={currentUser.alternateEmail} />
+                            <ProfileItem icon={<Room />} title='Present Address' data={currentUser.presentAddress} />
+                            <ProfileItem icon={<Room />} title='Permanent Address' data={currentUser.permanentAddress} />
+                            <ProfileItem icon={<Phone />} title='Mobile No' data={currentUser.phone} />
+                            <ProfileItem icon={<Phone />} title='Alternate Mobile No' data={currentUser.alternatePhone} />
+                            <ProfileItem icon={<Language />} title='Country' data={currentUser.country} />
+                            <ProfileItem icon={<Work />} title='Occupation' data={currentUser.occupation} />
+                            <ProfileItem icon={<School />} title='Last Education Degree' data={currentUser.lastEducationDegree} />
+                            <ProfileItem icon={<School />} title='Last Education Institute' data={currentUser.lastEducationInstitute} />
                         </Grid>
                     </Paper>
                 </Grid>

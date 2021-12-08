@@ -1,8 +1,10 @@
-import client from "../client";
-import { ChangePassword, UpdateUser } from "../../../typings/userTypings";
+import { AxiosResponse } from 'axios';
 
-const update = (data: UpdateUser) => client.put('/profile-update/', data);
-const changePassword = (data: ChangePassword) => client.delete('/change-password', data);
+import client from "../client";
+import { ChangePassword, User } from "../../../typings/userTypings";
+
+const update = (data: User): Promise<AxiosResponse> => client.post('/profile-update/', data);
+const changePassword = (data: ChangePassword): Promise<AxiosResponse> => client.post('/change-password', data);
 
 const user = {
     update,

@@ -4,7 +4,7 @@ import classes from './profileItem.module.css'
 
 interface DataProps {
     icon: React.ReactElement,
-    data: string,
+    data: string | null,
     title: string,
 }
 
@@ -20,7 +20,7 @@ const ProfileItem = ({ icon, data, title }: DataProps) => {
                     </ListItemAvatar>
                     <ListItemText
                         primary={<small>{title}</small>}
-                        secondary={data}
+                        secondary={data ? data : 'N/A'}
                     />
                 </ListItem>
             </List>

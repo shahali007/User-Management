@@ -1,5 +1,11 @@
-export interface UpdateUser{
-    firstname: string,
+export interface ChangePassword {
+    currentPassword: string,
+    password: string,
+}
+
+export interface User {
+    authToken: string,
+    firstName: string,
     lastName: string | null,
     email: string,
     alternateEmail: string | null,
@@ -13,7 +19,3 @@ export interface UpdateUser{
     occupation: string | null,
 }
 
-export interface ChangePassword{
-    currentPassword: string,
-    password: string,
-}
