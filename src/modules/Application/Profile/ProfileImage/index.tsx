@@ -1,7 +1,7 @@
 import React from 'react';
 import { Paper, Box, Avatar } from '@mui/material';
 
-const ProfileImage = ():JSX.Element => {
+const ProfileImage = (): JSX.Element => {
     return (
         <Paper sx={{
             marginTop: 4,
