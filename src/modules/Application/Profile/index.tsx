@@ -3,7 +3,8 @@ import { Container, Grid, Paper } from '@mui/material';
 import { LensBlur, Email, Room, Phone, Language, Work } from '@mui/icons-material';
 
 import ProfileItem from '../../../shared/Component/ProfileItem';
-import ProfileImage from '../../../shared/Component/ProfileImage';
+import ProfileImage from './ProfileImage';
+import ChangePassword from './ChangePassword';
 
 const Profile = () => {
     return (
@@ -11,6 +12,7 @@ const Profile = () => {
             <Grid container spacing={3}>
                 <Grid item md={12} xs={12}>
                     <ProfileImage />
+                    <ChangePassword />
                     <Paper sx={{
                         marginTop: 2,
                         width: "100%"
