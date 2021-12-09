@@ -36,8 +36,8 @@
     yarn start or npm run start
     ```
 
-    Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-    Login [http://localhost:3000/login](http://localhost:3000/login).
+    Open [http://localhost:3000](http://localhost:3000) to view it in the browser.\
+    Login [http://localhost:3000/login](http://localhost:3000/login).\
     Register [http://localhost:3000/register](http://localhost:3000/register).
 
 -   Builds the app for production
