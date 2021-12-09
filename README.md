@@ -40,7 +40,7 @@
     Login [http://localhost:3000/login](http://localhost:3000/login).\
     Register [http://localhost:3000/register](http://localhost:3000/register).
 
--   Builds the app for production
+-   Build the app for production
     ```bash
     yarn build or npm run build
     ```
