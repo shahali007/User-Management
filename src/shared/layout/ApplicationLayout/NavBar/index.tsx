@@ -21,7 +21,7 @@ export default function NavBar() {
 						variant="h6"
 						component="div"
 						sx={{ flexGrow: 1 }}>
-						Hi, {currentUser.firstName + ' ' + currentUser.lastName}
+						Hi, {currentUser.firstName + ' ' + (currentUser.lastName !== null ? currentUser.lastName : '')}
 					</Typography>
 					<Button color="inherit" onClick={handleLogout}>
 						Logout

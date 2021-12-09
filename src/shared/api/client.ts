@@ -27,6 +27,10 @@ client.interceptors.response.use(
             alert('err::CONNECTION::REFUSED');
         }
         //console.log('Axios err.response.status', error.response.status);
+        else if (error.response.status === 401) {
+
+            //alert('401');
+        }
         else if (error.response.status === 401 && window.location.pathname !== '/login') {
             localStorage.clear();
             //alert('Session Expired!! Please login');

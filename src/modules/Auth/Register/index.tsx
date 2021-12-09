@@ -46,7 +46,7 @@ const Register = (): JSX.Element => {
 		try {
 			const response = await api.auth.register(obj);
 			dispatch(actions.auth.loginUser({
-				authToken: response.data.token,
+				authToken: `Bearer ${response.data.token}`,
 				firstName: response.data.data.first_name,
 				lastName: response.data.data.last_name,
 				email: response.data.data.email,

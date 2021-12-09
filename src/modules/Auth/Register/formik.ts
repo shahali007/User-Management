@@ -19,7 +19,7 @@ const initialValues = {
 
 const validationSchema = Yup.object().shape({
     firstName: Yup.string().required('First Name is required'),
-    lastName: Yup.string().required('Last Name is required'),
+    lastName: Yup.string(),
     email: Yup.string().email('Enter a valid email').required('Required'),
     alternateEmail: Yup.string().email('Enter a valid email'),
     phone: Yup.number().required('Phone is required').typeError('You must specify a number'),
