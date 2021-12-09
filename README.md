@@ -44,4 +44,5 @@
     ```bash
     yarn build or npm run build
     ```
-    Your app is ready to be deployed!
+    Your app is ready to be deployed!\
+    Live preview [https://um.cloudlylab.com/](https://um.cloudlylab.com)
