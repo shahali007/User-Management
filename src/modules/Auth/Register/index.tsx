@@ -1,13 +1,22 @@
 import * as React from "react";
-import { Button, Container, Grid, Box, Avatar, Typography, TextField } from "@mui/material";
-import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
-import { Link } from 'react-router-dom'
+import {
+	Button,
+	Container,
+	Grid,
+	Box,
+	Avatar,
+	Typography,
+	TextField,
+} from "@mui/material";
+import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
+import { Link } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
-import { useDispatch, useSelector } from 'react-redux';
-import { store } from 'react-notifications-component';
+import { useDispatch } from "react-redux";
+import { store } from "react-notifications-component";
 import { useFormik } from "formik";
 import classes from "./register.module.css";
 import CircularProgress from "@mui/material/CircularProgress";
+
 import api from "../../../shared/api";
 import actions from "../../../redux/actions";
 import { RegisterValues } from "../../../typings/authTypings";
@@ -19,11 +28,10 @@ const Register = (): JSX.Element => {
 	const formik = useFormik({
 		initialValues: initialValues,
 		validationSchema: validationSchema,
-		onSubmit: values => {
+		onSubmit: (values) => {
 			handleSubmit(values);
 		},
 	});
-
 
 	const handleSubmit = async (values: RegisterValues) => {
 		console.log(values);
@@ -41,29 +49,32 @@ const Register = (): JSX.Element => {
 			last_education_institute: values.lastEducationInstitute,
 			country: values.country,
 			occupation: values.occupation,
-			password: values.password
-		}
+			password: values.password,
+		};
 		try {
 			const response = await api.auth.register(obj);
-			dispatch(actions.auth.loginUser({
-				authToken: `Bearer ${response.data.token}`,
-				firstName: response.data.data.first_name,
-				lastName: response.data.data.last_name,
-				email: response.data.data.email,
-				alternateEmail: response.data.data.alternate_email,
-				phone: response.data.data.phone,
-				alternatePhone: response.data.data.alternate_phone,
-				presentAddress: response.data.data.present_address,
-				permanentAddress: response.data.data.permanent_address,
-				lastEducationDegree: response.data.data.last_education_degree,
-				lastEducationInstitute: response.data.data.last_education_institute,
-				country: response.data.data.country,
-				occupation: response.data.data.occupation,
-				profilePicture: response.data.data.profile_picture,
-			}));
+			dispatch(
+				actions.auth.loginUser({
+					authToken: `Bearer ${response.data.token}`,
+					firstName: response.data.data.first_name,
+					lastName: response.data.data.last_name,
+					email: response.data.data.email,
+					alternateEmail: response.data.data.alternate_email,
+					phone: response.data.data.phone,
+					alternatePhone: response.data.data.alternate_phone,
+					presentAddress: response.data.data.present_address,
+					permanentAddress: response.data.data.permanent_address,
+					lastEducationDegree:
+						response.data.data.last_education_degree,
+					lastEducationInstitute:
+						response.data.data.last_education_institute,
+					country: response.data.data.country,
+					occupation: response.data.data.occupation,
+					profilePicture: response.data.data.profile_picture,
+				})
+			);
 			setLoading(false);
-		}
-		catch (error: any) {
+		} catch (error: any) {
 			// on user not found returns 404
 			if (error.status === 404) {
 				window.location.href = "/login";
@@ -71,20 +82,20 @@ const Register = (): JSX.Element => {
 				setLoading(false);
 				store.addNotification({
 					title: "Error!",
-					message: 'Unauthorised! Please type valid email and password',
+					message:
+						"Unauthorised! Please type valid email and password",
 					type: "danger",
 					insert: "top",
 					container: "top-right",
 
 					dismiss: {
 						duration: 5000,
-						onScreen: true
-					}
+						onScreen: true,
+					},
 				});
 			}
 		}
 	};
-
 
 	return (
 		<Container component="main" maxWidth="md">
@@ -115,13 +126,19 @@ const Register = (): JSX.Element => {
 									name="firstName"
 									autoComplete="firstName"
 									InputLabelProps={{
-										shrink: true
+										shrink: true,
 									}}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
 									value={formik.values.firstName}
-									error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-									helperText={formik.touched.firstName && formik.errors.firstName}
+									error={
+										formik.touched.firstName &&
+										Boolean(formik.errors.firstName)
+									}
+									helperText={
+										formik.touched.firstName &&
+										formik.errors.firstName
+									}
 								/>
 							</Grid>
 							<Grid item md={6} xs={12}>
@@ -133,13 +150,19 @@ const Register = (): JSX.Element => {
 									name="lastName"
 									autoComplete="lastName"
 									InputLabelProps={{
-										shrink: true
+										shrink: true,
 									}}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
 									value={formik.values.lastName}
-									error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-									helperText={formik.touched.lastName && formik.errors.lastName}
+									error={
+										formik.touched.lastName &&
+										Boolean(formik.errors.lastName)
+									}
+									helperText={
+										formik.touched.lastName &&
+										formik.errors.lastName
+									}
 								/>
 							</Grid>
 							<Grid item md={6} xs={12}>
@@ -152,13 +175,19 @@ const Register = (): JSX.Element => {
 									name="email"
 									autoComplete="email"
 									InputLabelProps={{
-										shrink: true
+										shrink: true,
 									}}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
 									value={formik.values.email}
-									error={formik.touched.email && Boolean(formik.errors.email)}
-									helperText={formik.touched.email && formik.errors.email}
+									error={
+										formik.touched.email &&
+										Boolean(formik.errors.email)
+									}
+									helperText={
+										formik.touched.email &&
+										formik.errors.email
+									}
 								/>
 							</Grid>
 							<Grid item md={6} xs={12}>
@@ -170,13 +199,19 @@ const Register = (): JSX.Element => {
 									name="alternateEmail"
 									autoComplete="alternateEmail"
 									InputLabelProps={{
-										shrink: true
+										shrink: true,
 									}}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
 									value={formik.values.alternateEmail}
-									error={formik.touched.alternateEmail && Boolean(formik.errors.alternateEmail)}
-									helperText={formik.touched.alternateEmail && formik.errors.alternateEmail}
+									error={
+										formik.touched.alternateEmail &&
+										Boolean(formik.errors.alternateEmail)
+									}
+									helperText={
+										formik.touched.alternateEmail &&
+										formik.errors.alternateEmail
+									}
 								/>
 							</Grid>
 
@@ -191,13 +226,19 @@ const Register = (): JSX.Element => {
 									id="password"
 									autoComplete="password"
 									InputLabelProps={{
-										shrink: true
+										shrink: true,
 									}}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
 									value={formik.values.password}
-									error={formik.touched.password && Boolean(formik.errors.password)}
-									helperText={formik.touched.password && formik.errors.password}
+									error={
+										formik.touched.password &&
+										Boolean(formik.errors.password)
+									}
+									helperText={
+										formik.touched.password &&
+										formik.errors.password
+									}
 								/>
 							</Grid>
 							<Grid item md={6} xs={12}>
@@ -211,13 +252,19 @@ const Register = (): JSX.Element => {
 									id="confirmPassword"
 									autoComplete="confirmPassword"
 									InputLabelProps={{
-										shrink: true
+										shrink: true,
 									}}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
 									value={formik.values.confirmPassword}
-									error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
-									helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
+									error={
+										formik.touched.confirmPassword &&
+										Boolean(formik.errors.confirmPassword)
+									}
+									helperText={
+										formik.touched.confirmPassword &&
+										formik.errors.confirmPassword
+									}
 								/>
 							</Grid>
 							<Grid item md={6} xs={12}>
@@ -229,13 +276,21 @@ const Register = (): JSX.Element => {
 									id="lastEducationDegree"
 									autoComplete="lastEducationDegree"
 									InputLabelProps={{
-										shrink: true
+										shrink: true,
 									}}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
 									value={formik.values.lastEducationDegree}
-									error={formik.touched.lastEducationDegree && Boolean(formik.errors.lastEducationDegree)}
-									helperText={formik.touched.lastEducationDegree && formik.errors.lastEducationDegree}
+									error={
+										formik.touched.lastEducationDegree &&
+										Boolean(
+											formik.errors.lastEducationDegree
+										)
+									}
+									helperText={
+										formik.touched.lastEducationDegree &&
+										formik.errors.lastEducationDegree
+									}
 								/>
 							</Grid>
 							<Grid item md={6} xs={12}>
@@ -247,13 +302,21 @@ const Register = (): JSX.Element => {
 									id="lastEducationInstitute"
 									autoComplete="lastEducationInstitute"
 									InputLabelProps={{
-										shrink: true
+										shrink: true,
 									}}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
 									value={formik.values.lastEducationInstitute}
-									error={formik.touched.lastEducationInstitute && Boolean(formik.errors.lastEducationInstitute)}
-									helperText={formik.touched.lastEducationInstitute && formik.errors.lastEducationInstitute}
+									error={
+										formik.touched.lastEducationInstitute &&
+										Boolean(
+											formik.errors.lastEducationInstitute
+										)
+									}
+									helperText={
+										formik.touched.lastEducationInstitute &&
+										formik.errors.lastEducationInstitute
+									}
 								/>
 							</Grid>
 							<Grid item md={6} xs={12}>
@@ -266,13 +329,19 @@ const Register = (): JSX.Element => {
 									name="presentAddress"
 									autoComplete="presentAddress"
 									InputLabelProps={{
-										shrink: true
+										shrink: true,
 									}}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
 									value={formik.values.presentAddress}
-									error={formik.touched.presentAddress && Boolean(formik.errors.presentAddress)}
-									helperText={formik.touched.presentAddress && formik.errors.presentAddress}
+									error={
+										formik.touched.presentAddress &&
+										Boolean(formik.errors.presentAddress)
+									}
+									helperText={
+										formik.touched.presentAddress &&
+										formik.errors.presentAddress
+									}
 								/>
 							</Grid>
 							<Grid item md={6} xs={12}>
@@ -285,13 +354,19 @@ const Register = (): JSX.Element => {
 									name="permanentAddress"
 									autoComplete="permanentAddress"
 									InputLabelProps={{
-										shrink: true
+										shrink: true,
 									}}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
 									value={formik.values.permanentAddress}
-									error={formik.touched.permanentAddress && Boolean(formik.errors.permanentAddress)}
-									helperText={formik.touched.permanentAddress && formik.errors.permanentAddress}
+									error={
+										formik.touched.permanentAddress &&
+										Boolean(formik.errors.permanentAddress)
+									}
+									helperText={
+										formik.touched.permanentAddress &&
+										formik.errors.permanentAddress
+									}
 								/>
 							</Grid>
 							<Grid item md={6} xs={12}>
@@ -303,13 +378,19 @@ const Register = (): JSX.Element => {
 									id="phone"
 									autoComplete="phone"
 									InputLabelProps={{
-										shrink: true
+										shrink: true,
 									}}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
 									value={formik.values.phone}
-									error={formik.touched.phone && Boolean(formik.errors.phone)}
-									helperText={formik.touched.phone && formik.errors.phone}
+									error={
+										formik.touched.phone &&
+										Boolean(formik.errors.phone)
+									}
+									helperText={
+										formik.touched.phone &&
+										formik.errors.phone
+									}
 								/>
 							</Grid>
 							<Grid item md={6} xs={12}>
@@ -321,13 +402,19 @@ const Register = (): JSX.Element => {
 									id="alternatePhone"
 									autoComplete="alternatePhone"
 									InputLabelProps={{
-										shrink: true
+										shrink: true,
 									}}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
 									value={formik.values.alternatePhone}
-									error={formik.touched.alternatePhone && Boolean(formik.errors.alternatePhone)}
-									helperText={formik.touched.alternatePhone && formik.errors.alternatePhone}
+									error={
+										formik.touched.alternatePhone &&
+										Boolean(formik.errors.alternatePhone)
+									}
+									helperText={
+										formik.touched.alternatePhone &&
+										formik.errors.alternatePhone
+									}
 								/>
 							</Grid>
 							<Grid item md={12} xs={12}>
@@ -339,13 +426,19 @@ const Register = (): JSX.Element => {
 									id="country"
 									autoComplete="country"
 									InputLabelProps={{
-										shrink: true
+										shrink: true,
 									}}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
 									value={formik.values.country}
-									error={formik.touched.country && Boolean(formik.errors.country)}
-									helperText={formik.touched.country && formik.errors.country}
+									error={
+										formik.touched.country &&
+										Boolean(formik.errors.country)
+									}
+									helperText={
+										formik.touched.country &&
+										formik.errors.country
+									}
 								/>
 							</Grid>
 							<Grid item md={12} xs={12}>
@@ -357,19 +450,28 @@ const Register = (): JSX.Element => {
 									id="occupation"
 									autoComplete="occupation"
 									InputLabelProps={{
-										shrink: true
+										shrink: true,
 									}}
 									onChange={formik.handleChange}
 									onBlur={formik.handleBlur}
 									value={formik.values.occupation}
-									error={formik.touched.occupation && Boolean(formik.errors.occupation)}
-									helperText={formik.touched.occupation && formik.errors.occupation}
+									error={
+										formik.touched.occupation &&
+										Boolean(formik.errors.occupation)
+									}
+									helperText={
+										formik.touched.occupation &&
+										formik.errors.occupation
+									}
 								/>
 							</Grid>
-
 						</Grid>
 						<Typography align="center">
-							{loading && <Box my={2}><CircularProgress color="secondary" /></Box>}
+							{loading && (
+								<Box my={2}>
+									<CircularProgress color="primary" />
+								</Box>
+							)}
 						</Typography>
 						{!loading && (
 							<Button

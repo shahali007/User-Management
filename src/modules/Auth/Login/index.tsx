@@ -10,8 +10,8 @@ import Container from "@mui/material/Container";
 import CircularProgress from "@mui/material/CircularProgress";
 import { createTheme } from "@mui/material/styles";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
-import { store } from 'react-notifications-component';
+import { useDispatch, useSelector } from "react-redux";
+import { store } from "react-notifications-component";
 import { useFormik } from "formik";
 
 import api from "../../../shared/api";
@@ -29,7 +29,7 @@ export default function Login() {
 	const formik = useFormik({
 		initialValues: initialValues,
 		validationSchema: validationSchema,
-		onSubmit: values => {
+		onSubmit: (values) => {
 			handleSubmit(values);
 		},
 	});
@@ -39,25 +39,28 @@ export default function Login() {
 		try {
 			const response = await api.auth.login(values);
 			console.log(response);
-			dispatch(actions.auth.loginUser({
-				authToken: `Bearer ${response.data.token}`,
-				firstName: response.data.data.first_name,
-				lastName: response.data.data.last_name,
-				email: response.data.data.email,
-				alternateEmail: response.data.data.alternate_email,
-				phone: response.data.data.phone,
-				alternatePhone: response.data.data.alternate_phone,
-				presentAddress: response.data.data.present_address,
-				permanentAddress: response.data.data.permanent_address,
-				lastEducationDegree: response.data.data.last_education_degree,
-				lastEducationInstitute: response.data.data.last_education_institute,
-				country: response.data.data.country,
-				occupation: response.data.data.occupation,
-				profilePicture: response.data.data.profile_picture,
-			}));
+			dispatch(
+				actions.auth.loginUser({
+					authToken: `Bearer ${response.data.token}`,
+					firstName: response.data.data.first_name,
+					lastName: response.data.data.last_name,
+					email: response.data.data.email,
+					alternateEmail: response.data.data.alternate_email,
+					phone: response.data.data.phone,
+					alternatePhone: response.data.data.alternate_phone,
+					presentAddress: response.data.data.present_address,
+					permanentAddress: response.data.data.permanent_address,
+					lastEducationDegree:
+						response.data.data.last_education_degree,
+					lastEducationInstitute:
+						response.data.data.last_education_institute,
+					country: response.data.data.country,
+					occupation: response.data.data.occupation,
+					profilePicture: response.data.data.profile_picture,
+				})
+			);
 			setLoading(false);
-		}
-		catch (error: any) {
+		} catch (error: any) {
 			// on user not found returns 404
 			if (error.status === 404) {
 				window.location.href = "/login";
@@ -65,15 +68,16 @@ export default function Login() {
 				setLoading(false);
 				store.addNotification({
 					title: "Error!",
-					message: 'Unauthorised! Please type valid email and password',
+					message:
+						"Unauthorised! Please type valid email and password",
 					type: "danger",
 					insert: "top",
 					container: "top-right",
 
 					dismiss: {
 						duration: 5000,
-						onScreen: true
-					}
+						onScreen: true,
+					},
 				});
 			}
 		}
@@ -96,8 +100,7 @@ export default function Login() {
 					Sign in
 				</Typography>
 				<form onSubmit={formik.handleSubmit}>
-					<Box
-						sx={{ mt: 1 }}>
+					<Box sx={{ mt: 1 }}>
 						<TextField
 							margin="normal"
 							required
@@ -109,8 +112,13 @@ export default function Login() {
 							onChange={formik.handleChange}
 							onBlur={formik.handleBlur}
 							value={formik.values.email}
-							error={formik.touched.email && Boolean(formik.errors.email)}
-							helperText={formik.touched.email && formik.errors.email}
+							error={
+								formik.touched.email &&
+								Boolean(formik.errors.email)
+							}
+							helperText={
+								formik.touched.email && formik.errors.email
+							}
 						/>
 						<TextField
 							required
@@ -122,11 +130,21 @@ export default function Login() {
 							onChange={formik.handleChange}
 							onBlur={formik.handleBlur}
 							value={formik.values.password}
-							error={formik.touched.password && Boolean(formik.errors.password)}
-							helperText={formik.touched.password && formik.errors.password}
+							error={
+								formik.touched.password &&
+								Boolean(formik.errors.password)
+							}
+							helperText={
+								formik.touched.password &&
+								formik.errors.password
+							}
 						/>
 						<Typography align="center">
-							{loading && <Box my={2}><CircularProgress color="secondary" /></Box>}
+							{loading && (
+								<Box my={2}>
+									<CircularProgress color="primary" />
+								</Box>
+							)}
 						</Typography>
 						{!loading && (
 							<Button
