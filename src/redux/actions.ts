@@ -1,9 +1,6 @@
 import auth from './auth/action';
-import user from './user/action';
-
 
 const actions = {
-  auth,
-  user
+  auth
 };
 export default actions;

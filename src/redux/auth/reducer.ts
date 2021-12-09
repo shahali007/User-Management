@@ -21,6 +21,7 @@ const initialState: State = {
     lastEducationInstitute: '',
     country: '',
     occupation: '',
+    profilePicture: '',
   }
 };
 

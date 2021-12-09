@@ -1,6 +1,12 @@
-export interface ChangePassword {
-    currentPassword: string,
+export interface ChangePasswordValues {
+    confirmPassword: string,
     password: string,
+    currentPassword: string
+}
+
+export interface ChangePasswordObj {
+    current_password: string,
+    password: string
 }
 
 export interface User {
@@ -17,5 +23,6 @@ export interface User {
     lastEducationInstitute: string | null,
     country: string | null,
     occupation: string | null,
+    profilePicture: string | null
 }
 

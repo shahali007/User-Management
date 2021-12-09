@@ -24,7 +24,7 @@ const theme = createTheme();
 
 export default function Login() {
 	const dispatch = useDispatch();
-	const [loading, setLoading] = React.useState<boolean>(false);	
+	const [loading, setLoading] = React.useState<boolean>(false);
 
 	const formik = useFormik({
 		initialValues: initialValues,
@@ -40,7 +40,7 @@ export default function Login() {
 			const response = await api.auth.login(values);
 			console.log(response);
 			dispatch(actions.auth.loginUser({
-				authToken: response.data.token,
+				authToken: `Bearer ${response.data.token}`,
 				firstName: response.data.data.first_name,
 				lastName: response.data.data.last_name,
 				email: response.data.data.email,
@@ -53,6 +53,7 @@ export default function Login() {
 				lastEducationInstitute: response.data.data.last_education_institute,
 				country: response.data.data.country,
 				occupation: response.data.data.occupation,
+				profilePicture: response.data.data.profile_picture,
 			}));
 			setLoading(false);
 		}

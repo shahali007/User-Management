@@ -59,6 +59,7 @@ const Register = (): JSX.Element => {
 				lastEducationInstitute: response.data.data.last_education_institute,
 				country: response.data.data.country,
 				occupation: response.data.data.occupation,
+				profilePicture: response.data.data.profile_picture,
 			}));
 			setLoading(false);
 		}
@@ -83,6 +84,7 @@ const Register = (): JSX.Element => {
 			}
 		}
 	};
+
 
 	return (
 		<Container component="main" maxWidth="md">

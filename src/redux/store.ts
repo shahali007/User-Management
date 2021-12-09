@@ -5,7 +5,6 @@ import logger from 'redux-logger';
 import reducers from './reducers'; // auth
 
 import { State as authState } from './auth/reducer';
-import { User as userState } from './user/reducer';
 
 const persistConfig = {
   key: 'root',
@@ -18,5 +17,4 @@ export const persistor = persistStore(store);
 
 export interface RootState {
   auth: authState;
-  user: userState;
 }

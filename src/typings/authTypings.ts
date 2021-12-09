@@ -32,5 +32,4 @@ export interface RegisterObj {
     last_education_institute: string | null,
     country: string | null,
     occupation: string | null,
-    password: string
 }
