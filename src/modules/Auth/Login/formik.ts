@@ -1,15 +1,13 @@
-import * as Yup from 'yup';
+import * as Yup from "yup";
 
 const initialValues = {
-    email: '',
-    password: ''
+	email: "",
+	password: "",
 };
 
 const validationSchema = Yup.object().shape({
-    email: Yup.string().email('Enter a valid email').required('Required'),
-    password: Yup
-        .string()
-        .required('Password is required'),
+	email: Yup.string().email("Enter a valid email").required("Required"),
+	password: Yup.string().min(8).required("Password is required"),
 });
 
 export { initialValues, validationSchema };
