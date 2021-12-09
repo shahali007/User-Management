@@ -1,20 +1,38 @@
 # Getting Started with User Management
 
-## Available Scripts
- * React: 17.0.2
+### System dependencies
+* React: 17.0.2
  * Typescript: 4.1.2
  * React-router-dom: 6.0.2 
  * Material UI: 5.1.0
+ * Redux 7.2.6
+ * Redux-logger 3.0.6
+ * Redux-persist 6.0.0
+ * Axios
+ * Formik
+ * Yup
+ * React Notifications Component 3.1.0
 
-In the project directory, you can run:
 
-### `yarn start`
+### How to run the Project
+- Create .env and paste the code into .env file
+   ```bash
+    REACT_APP_API_BASE_URL="https://www.tech.cloudlylab.com/public/api"
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    REACT_APP_STORAGE="https://www.tech.cloudlylab.com/public/uploads/"
+    ```
+- Install node modules
+    ```bash
+    yarn or npm install
+    ```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- In the project directory, you can run
+    ```bash
+    yarn start
+    ```
+    Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+
 
 ### `yarn test`
 
